@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PokemonSimplified extends React.Component {
   constructor() {
@@ -38,15 +39,17 @@ class PokemonSimplified extends React.Component {
   render() {
     const { type, name, sprite } = this.state;
     return (
-      <div>
-        <img src={ sprite } alt={ name } />
-        <h3>{ name }</h3>
+      <Link to={ `/${name.toLowerCase()}` }>
         <div>
-          {
-            type.map((item) => <p key={ item }>{ item }</p>)
-          }
+          <img src={ sprite } alt={ name } />
+          <h3>{ name }</h3>
+          <div>
+            {
+              type.map((item) => <p key={ item }>{ item }</p>)
+            }
+          </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
