@@ -1,5 +1,6 @@
 import React from 'react';
 import PokemonSimplified from '../components/PokemonSimplified';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
   constructor() {
@@ -8,10 +9,12 @@ class Home extends React.Component {
       pokemonData: [],
       limit: 15,
       set: 0,
+      inputPokemon: '',
     };
 
     this.handleClickIncrease = this.handleClickIncrease.bind(this);
     this.handleClickDecrease = this.handleClickDecrease.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
@@ -55,10 +58,28 @@ class Home extends React.Component {
     }))
   }
 
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
-    const { pokemonData, set } = this.state;
+    const { pokemonData, set, inputPokemon } = this.state;
     return (
       <section>
+        <div>
+          <input
+            name="inputPokemon"
+            type="text"
+            value={ inputPokemon }
+            onChange={ this.handleChange }
+          />
+          <button>Pesquisar</button>
+        </div>
         <div>
           {
             pokemonData.map((item, index) => (
