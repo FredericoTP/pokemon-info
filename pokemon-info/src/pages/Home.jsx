@@ -1,4 +1,5 @@
 import React from 'react';
+import PokemonSimplified from '../components/PokemonSimplified';
 
 class Home extends React.Component {
   constructor() {
@@ -13,14 +14,23 @@ class Home extends React.Component {
     const response = await fetch(url);
     const data = await response.json();
     this.setState({
-      pokemonData: data,
+      pokemonData: data.results,
     });
   }
 
   render() {
     const { pokemonData } = this.state;
     return (
-      <p>asd</p>
+      <section>
+        {
+          pokemonData.map((item, index) => (
+            <PokemonSimplified
+              key={ `${item.name}${index}` }
+              pokemon={ item.url }
+            />
+          ))
+        }
+      </section>
     );
   }
 }
