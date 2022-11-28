@@ -10,6 +10,7 @@ class Home extends React.Component {
       limit: 15,
       set: 0,
       inputPokemon: '',
+      types: 'todos',
     };
 
     this.handleClickIncrease = this.handleClickIncrease.bind(this);
@@ -101,7 +102,7 @@ class Home extends React.Component {
           </button>
         </div>
         <div>
-          <select name="types">
+          <select name="types" onChange={ this.handleChange }>
             <option value="todos">Todos</option>
             <option value="1">Normal</option>
             <option value="2">Lutador</option>
