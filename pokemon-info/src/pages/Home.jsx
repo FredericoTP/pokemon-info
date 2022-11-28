@@ -15,6 +15,7 @@ class Home extends React.Component {
     this.handleClickIncrease = this.handleClickIncrease.bind(this);
     this.handleClickDecrease = this.handleClickDecrease.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClickFindPokemon = this.handleClickFindPokemon.bind(this);
   }
 
   async componentDidMount() {
@@ -67,6 +68,19 @@ class Home extends React.Component {
     });
   }
 
+  handleClickFindPokemon() {
+    const { inputPokemon } = this.state;
+    const data = [{
+      name: inputPokemon,
+      url: `https://pokeapi.co/api/v2/pokemon/${inputPokemon.toLowerCase()}`,
+    }];
+
+    this.setState({
+      pokemonData: data,
+      inputPokemon: '',
+    });
+  }
+
   render() {
     const { pokemonData, set, inputPokemon } = this.state;
     return (
@@ -78,7 +92,12 @@ class Home extends React.Component {
             value={ inputPokemon }
             onChange={ this.handleChange }
           />
-          <button>Pesquisar</button>
+          <button
+            onClick={ this.handleClickFindPokemon }
+            type="button"
+          >
+            Pesquisar
+          </button>
         </div>
         <div>
           {
