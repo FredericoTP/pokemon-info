@@ -95,9 +95,33 @@ class Home extends React.Component {
           <button
             onClick={ this.handleClickFindPokemon }
             type="button"
+            disabled={ inputPokemon === '' }
           >
             Pesquisar
           </button>
+        </div>
+        <div>
+          <select name="types">
+            <option value="todos">Todos</option>
+            <option value="1">Normal</option>
+            <option value="2">Lutador</option>
+            <option value="3">Voador</option>
+            <option value="4">Venenoso</option>
+            <option value="5">Terra</option>
+            <option value="6">Pedra</option>
+            <option value="7">Inseto</option>
+            <option value="8">Fantasma</option>
+            <option value="9">Ferro</option>
+            <option value="10">Fogo</option>
+            <option value="11">Água</option>
+            <option value="12">Grama</option>
+            <option value="13">Elétrico</option>
+            <option value="14">Psíquico</option>
+            <option value="15">Gelo</option>
+            <option value="16">Dragão</option>
+            <option value="17">Sombrio</option>
+            <option value="18">Fada</option>
+          </select>
         </div>
         <div>
           {
