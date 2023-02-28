@@ -3,10 +3,10 @@ import HomeContext from "./HomeContext";
 import useFetch from '../hooks/useFetch';
 
 function HomeProvider({ children }) {
-  const {data, error, loading, fetchAllPokemon} = useFetch();
+  const allPokemons = useFetch();
 
   return (
-    <HomeContext.Provider value={ { data, error, loading, fetchAllPokemon } }>
+    <HomeContext.Provider value={ { allPokemons } }>
       {children}
     </HomeContext.Provider>
   );
