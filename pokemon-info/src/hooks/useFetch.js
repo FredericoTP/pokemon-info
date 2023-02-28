@@ -5,12 +5,12 @@ function useFetch() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchApi = async (url) => {
+  const fetchAllPokemon = async (url) => {
     setLoading(true);
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setData(data);
+      setData(data.results);
     } catch (e) {
       setError(e);
     } finally {
@@ -22,7 +22,7 @@ function useFetch() {
     data,
     error,
     loading,
-    fetchApi,
+    fetchAllPokemon,
   };
 }
 

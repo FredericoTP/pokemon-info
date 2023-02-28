@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import HomeContext from "./HomeContext";
+import useFetch from '../hooks/useFetch';
 
 function HomeProvider({ children }) {
+  const allPokemons = useFetch();
+
   return (
-    <HomeContext.Provider value={ { asd:'asd' } }>
+    <HomeContext.Provider value={ { allPokemons } }>
       {children}
     </HomeContext.Provider>
   );
